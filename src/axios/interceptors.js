@@ -5,26 +5,28 @@ const authFetch = axios.create({
 });
 
 authFetch.interceptors.request.use(
-  (request) => {
-    request.headers["Accept"] = "application/json";
+  (req) => {
+    req.headers["Accept"] = "application/json";
     console.log("request sent");
-    return request;
+    return req;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
+
 authFetch.interceptors.response.use(
-  (response) => {
-    console.log("got response");
-    return response;
+  (res) => {
+    console.log("response received");
+    return res;
   },
   (error) => {
     console.log(error.response);
-    if(error.response.status === 404){
-        console.log("NOT FOUND")
-        return Promise.reject(error);
+    if (error.response.status === 404) {
+      // do something
+      console.log("NOT FOUND");
     }
+    return Promise.reject(error);
   }
 );
 

@@ -6,12 +6,11 @@ const randomUserUrl = "https://randomuser.me/api";
 const CustomInstance = () => {
   const fetchData = async () => {
     try {
-      const resp1 = await authFetch("/react-store-products")
-      const resp2 = await axios(randomUserUrl)
+      const response1 = await authFetch("/react-store-products");
+      console.log(response1);
     } catch (error) {
-      
+      console.log(error);
     }
-    console.log("custom axios instance");
   };
 
   useEffect(() => {
